@@ -1,11 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../../../assets/css/main.css'
 import '../../../assets/css/util.css'
 //react icon
-import { AiFillGoogleCircle, AiFillFacebook, AiFillGithub  } from "react-icons/ai";
+import { AiFillGoogleCircle, AiFillFacebook, AiFillGithub, AiFillEye ,AiFillEyeInvisible   } from "react-icons/ai";
 
 
 const AdminLogin = () =>{
+
+    const [input, setInput] = useState({
+        email:'admin@app.com',
+        password:'12345678'
+    })
+
+    const [isShowPassword, setIsShowPassword] = useState(false)
+
+    const inputChangeHandler = (e) =>{
+        const {name, value} = e.target
+        setInput({
+            ...input,
+            [name]: value
+        })
+    }
+
+
     return (
         <div className="limiter">
         
@@ -21,13 +38,33 @@ const AdminLogin = () =>{
 
 					<div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span className="label-input100">Username</span>
-						<input className="input100" type="text" name="username" placeholder="Type your username"/>
+						<input className="input100" type="email" name="email" placeholder="Type your email"
+                        onChange={inputChangeHandler}
+                        defaultValue={input.email} />
 						<span className="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div className="wrap-input100 validate-input" data-validate="Password is required">
 						<span className="label-input100">Password</span>
-						<input className="input100" type="password" name="pass" placeholder="Type your password"/>
+                        <div style={{
+                            display: 'flex'
+                        }}>
+                            <input className="input100" type={
+                                isShowPassword ? "text" : "password"
+                            } name="pass" placeholder="Type your password" 
+                            onChange={inputChangeHandler}
+                            defaultValue={input.password}/>
+                            {
+                                isShowPassword ? <AiFillEyeInvisible onClick={() => setIsShowPassword(!isShowPassword)} style={{
+                                    marginTop:'18px'
+                                }} /> :  <AiFillEye
+                                onClick={() => setIsShowPassword(!isShowPassword)}
+                                style={{
+                                    marginTop:'18px'
+                                }} />
+                            }
+                        </div>
+					
 						<span className="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
