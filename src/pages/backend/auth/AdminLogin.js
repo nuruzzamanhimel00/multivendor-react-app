@@ -3,6 +3,13 @@ import '../../../assets/css/main.css'
 import '../../../assets/css/util.css'
 //react icon
 import { AiFillGoogleCircle, AiFillFacebook, AiFillGithub, AiFillEye ,AiFillEyeInvisible   } from "react-icons/ai";
+// //services
+// import {httpRequest} from '../../../services/AllServices.js'
+
+// //api
+// import {useLoginUrl} from "../../../helpers/apiRoutes/index.js"
+
+//prime react
 
 
 const AdminLogin = () =>{
@@ -21,6 +28,15 @@ const AdminLogin = () =>{
             [name]: value
         })
     }
+	const submitHandler = (e) =>{
+		e.preventDefault()
+		console.log(input)
+		if(input.email !== '' && input.password !== ''){
+
+		}else{
+			alert('please enter email and password')
+		}
+	}
 
 
     return (
@@ -31,7 +47,7 @@ const AdminLogin = () =>{
             })`}} >
 		
 			<div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form className="login100-form validate-form">
+				<form className="login100-form validate-form" onSubmit={submitHandler}>
 					<span className="login100-form-title p-b-49">
 						Login
 					</span>
@@ -51,7 +67,7 @@ const AdminLogin = () =>{
                         }}>
                             <input className="input100" type={
                                 isShowPassword ? "text" : "password"
-                            } name="pass" placeholder="Type your password" 
+                            } name="password" placeholder="Type your password" 
                             onChange={inputChangeHandler}
                             defaultValue={input.password}/>
                             {
@@ -72,6 +88,9 @@ const AdminLogin = () =>{
 						{/* <a href="#">
 							Forgot password?
 						</a> */}
+						<span>
+						Forgot password?
+						</span>
 					</div>
 					
 					<div className="container-login100-form-btn">
