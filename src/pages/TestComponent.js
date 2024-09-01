@@ -3,6 +3,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import { increment, decrement } from "../store/counter-slice.js"
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+
+import 'primeicons/primeicons.css';
+        
+import { Button } from 'primereact/button';
 
 const TestComponent = () =>{
 
@@ -20,6 +25,7 @@ const TestComponent = () =>{
             <div>
                 <button onClick={() => dispatch(increment())}>Increment</button>
                 <button onClick={() => dispatch(decrement())}>Decrement</button>
+                <Button label="Check" icon="pi pi-check" />
             </div>
         </>
     )
