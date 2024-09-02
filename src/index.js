@@ -13,7 +13,9 @@ import router from "./routers/index.js";
 import store from "./store/index.js";
 import { Provider } from "react-redux";
 
-
+//prime react
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import 'primeicons/primeicons.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

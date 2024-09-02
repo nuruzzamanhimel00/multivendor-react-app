@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { increment, decrement } from "../store/counter-slice.js"
 import "primereact/resources/themes/lara-light-cyan/theme.css";
-
 import 'primeicons/primeicons.css';
         
 import { Button } from 'primereact/button';
