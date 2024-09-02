@@ -7,6 +7,9 @@ import {
 
   import AdminLogin from "../pages/backend/auth/AdminLogin.js";
 
+  //admin panel
+  import AdminLayout from '../pages/backend/layouts/AdminLayout.js'
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -15,8 +18,11 @@ import {
     {
         path: "/admin/login",
         element: <AdminLogin />,
-    
-      },
+    },
+    {
+      path: "/admin/dashboard",
+      element: <AdminLayout />,
+    },
   ]);
 
 

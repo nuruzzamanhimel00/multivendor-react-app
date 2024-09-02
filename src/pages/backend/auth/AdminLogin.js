@@ -4,16 +4,19 @@ import '../../../assets/css/util.css'
 //react icon
 import { AiFillGoogleCircle, AiFillFacebook, AiFillGithub, AiFillEye ,AiFillEyeInvisible   } from "react-icons/ai";
 // //services
-// import {httpRequest} from '../../../services/AllServices.js'
+import {httpRequest} from '../../../services/AllServices.js'
 
 // //api
-// import {useLoginUrl} from "../../../helpers/apiRoutes/index.js"
+import {useLoginUrl} from "../../../helpers/apiRoutes/index.js"
 
-//prime react
+//react router
+//react router
+import { useNavigate } from "react-router-dom";
 
 //redux
 import {addToaster} from "../../../store/toaster-slice.js"
 import { useDispatch } from 'react-redux'
+import {setLoginData} from "../../../store/backend/auth-slice.js"
 
 //uuid
 import { v4 as uuidv4 } from 'uuid';
@@ -21,7 +24,11 @@ import { v4 as uuidv4 } from 'uuid';
 //components
 import ToasterNotification from '../../../components/TosterNotification.js'
 
+//nprogress
+import NProgress from "nprogress";
+
 const AdminLogin = () =>{
+	const navigate = useNavigate();
 
     const dispatch = useDispatch()
 
@@ -39,12 +46,49 @@ const AdminLogin = () =>{
             [name]: value
         })
     }
-	const submitHandler = (e) =>{
+	const submitHandler = async (e) =>{
+	
 		e.preventDefault()
+		NProgress.start();
 		// console.log(input)
 		if(input.email !== '' && input.password !== ''){
-
+			await httpRequest({
+				url: useLoginUrl,
+				method: "POST",
+				headers: {
+				  "Content-Type": "application/json",
+				},
+				body: {
+				  email: input.email,
+				  password: input.password,
+				},
+			  }).then((response) =>{
+				console.log('response',response)
+				if(response.status){
+					
+					//success message
+					dispatch(addToaster(
+						{id:uuidv4(),severity:'success', summary: 'Success', detail:response.message, life: 3000}
+					))
+					
+					//admin token store
+					dispatch(setLoginData({
+						token: response.token,
+                		user: response.user,
+					}))
+					//redirect dashboard
+					navigate("/admin/dashboard");
+				}else{
+					dispatch(addToaster(
+						{id:uuidv4(),severity:'error', summary: 'Error', detail:response.message, life: 3000}
+					))
+				}
+			  }).catch((error) =>{
+				  console.log('errors', error)
+			  })
+			NProgress.done();
 		}else{
+			NProgress.done();
 			dispatch(addToaster(
 				{id:uuidv4(),severity:'error', summary: 'Error', detail:'All Field is required', life: 3000}
 			))
