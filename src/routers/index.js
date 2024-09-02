@@ -10,6 +10,10 @@ import {
   //admin panel
   import AdminLayout from '../pages/backend/layouts/AdminLayout.js'
 
+  //component
+  import {loader as AdminLoginLoader} from "../components/auth/RedirectIfAuthenticated.js"
+  import RedirectIfAuthenticated from "../components/auth/RedirectIfAuthenticated.js"
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -17,7 +21,9 @@ import {
     },
     {
         path: "/admin/login",
-        element: <AdminLogin />,
+        element: <RedirectIfAuthenticated element={<AdminLogin />} />,
+        // element: <AdminLogin />,
+        loader: AdminLoginLoader
     },
     {
       path: "/admin/dashboard",
