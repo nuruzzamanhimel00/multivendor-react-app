@@ -19,6 +19,10 @@ import 'primeicons/primeicons.css';
 
 //nprogress
 import "nprogress/nprogress.css";
+//bootstrap
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/css/style.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
