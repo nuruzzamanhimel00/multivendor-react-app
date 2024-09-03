@@ -1,6 +1,7 @@
 import {
-    createBrowserRouter,
+    createBrowserRouter,Navigate
   } from "react-router-dom";
+
 
   //import component
   import TestComponent from "../pages/TestComponent.js";
@@ -12,7 +13,10 @@ import {
 
   //component
   import {loader as AdminLoginLoader} from "../components/auth/RedirectIfAuthenticated.js"
+  import {loader as ProtectedRouteLoader} from "../components/auth/ProtectedRoute.js"
   import RedirectIfAuthenticated from "../components/auth/RedirectIfAuthenticated.js"
+  import ProtectedRoute from "../components/auth/ProtectedRoute.js"
+  import Dashboard from '../pages/backend/Dashboard.js'
 
   const router = createBrowserRouter([
     {
@@ -26,8 +30,21 @@ import {
         loader: AdminLoginLoader
     },
     {
-      path: "/admin/dashboard",
-      element: <AdminLayout />,
+      path: "/admin",
+      element: <ProtectedRoute element={<AdminLayout />} />,
+      loader: ProtectedRouteLoader,
+      children:[
+        {
+          index: true,
+          element: <Navigate to="dashboard" replace />,
+          // element: <Dashboard />,
+        },
+  
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+        }
+      ]
     },
   ]);
 

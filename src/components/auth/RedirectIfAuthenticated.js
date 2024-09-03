@@ -35,6 +35,7 @@ export const loader = async () => {
 
 const RedirectIfAuthenticated  = ({element}) =>{
     const loaderData = useLoaderData();
+  
     if(loaderData.response && loaderData.response.hasOwnProperty("name")){
         return <Navigate to="/admin/dashboard" />
     }

@@ -1,9 +1,11 @@
 import React from 'react'
+//react router
+import { Outlet} from "react-router-dom";
 
 const AdminLayout = () =>{
     return (
         <div>
-            Admin Layout
+            <Outlet />
             </div>
     )
 }
