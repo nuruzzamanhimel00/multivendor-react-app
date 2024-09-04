@@ -17,6 +17,7 @@ import {
   import RedirectIfAuthenticated from "../components/auth/RedirectIfAuthenticated.js"
   import ProtectedRoute from "../components/auth/ProtectedRoute.js"
   import Dashboard from '../pages/backend/Dashboard.js'
+  import About from '../pages/backend/About.js'
 
   const router = createBrowserRouter([
     {
@@ -43,7 +44,11 @@ import {
         {
           path: "dashboard",
           element: <Dashboard />,
-        }
+        },
+        {
+          path: "about",
+          element: <About />,
+        },
       ]
     },
   ]);

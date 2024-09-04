@@ -7,6 +7,10 @@ import { useLoaderData, Navigate } from "react-router-dom";
 import {httpRequest} from '../../services/AllServices.js'
 import {authUserUrl} from "../../helpers/apiRoutes/index.js"
 
+//react redux
+import { useDispatch } from 'react-redux';
+import {setLoginData} from '../../store/backend/auth-slice.js'
+
 export const loader = async () => {
     let token = getToken();
     if (!token) return <Navigate to="/admin/login" replace={true} />;
@@ -20,18 +24,29 @@ export const loader = async () => {
       },
     })
       .then((response) => {
-        return response;
+        return {
+          token,
+          response
+        }
+        // return response;
       })
       .catch((error) => {
         return "";
       });
   };
 const ProtectedRoute = ({element}) => {
-    const loaderData = useLoaderData();
+    const {token, response} = useLoaderData();
+    const dispatch = useDispatch()
     // console.log('loaderData',loaderData)
-    if(!loaderData.hasOwnProperty("name")){
+    if(!response.hasOwnProperty("name")){
         return <Navigate to="/admin/login" />
     }
+    //admin token store
+    dispatch(setLoginData({
+      token: token,
+              user: response,
+    }))
+
     return element;
 
 

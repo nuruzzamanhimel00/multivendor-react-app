@@ -11,6 +11,11 @@ const SideBar = () => {
           icon: "pi pi-fw pi-home",
           to: "/admin/dashboard",
         },
+        {
+          label: "About",
+          icon: "pi pi-fw pi-home",
+          to: "/admin/about",
+        },
       ],
     },
     // {
