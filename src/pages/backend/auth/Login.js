@@ -11,7 +11,7 @@ import {useLoginUrl} from "../../../helpers/apiRoutes/index.js"
 
 //react router
 //react router
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 //redux
 import {addToaster} from "../../../store/toaster-slice.js"
@@ -27,7 +27,7 @@ import ToasterNotification from '../../../components/TosterNotification.js'
 //nprogress
 import NProgress from "nprogress";
 
-const AdminLogin = () =>{
+const Login = () =>{
 	const navigate = useNavigate();
 
     const dispatch = useDispatch()
@@ -163,7 +163,10 @@ const AdminLogin = () =>{
 
 						<div className="txt1 text-center p-t-54 p-b-20">
 							<span>
-								Or Sign Up Using
+							<NavLink to="/admin/register">
+							Or Sign Up Using
+								</NavLink>
+							
 							</span>
 						</div>
 
@@ -192,4 +195,4 @@ const AdminLogin = () =>{
     )
 }
 
-export default AdminLogin;
+export default Login;
