@@ -1,5 +1,6 @@
+import {getToken} from "./AllHelpers.js";
 export function authHeaders() {
-    let token = sessionStorage.getItem("token");
+    let token = getToken();
     return {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

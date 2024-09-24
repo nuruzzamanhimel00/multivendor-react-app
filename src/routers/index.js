@@ -28,13 +28,11 @@ import Register from "../pages/backend/auth/Register.js";
     {
         path: "/admin/login",
         element: <RedirectIfAuthenticated element={<Login />} />,
-        // element: <Login />,
         loader: LoginLoader
     },
     {
         path: "/admin/register",
         element: <RedirectIfAuthenticated element={<Register />} />,
-        // element: <Login />,
         loader: LoginLoader
     },
     {
