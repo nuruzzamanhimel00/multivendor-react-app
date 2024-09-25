@@ -6,10 +6,11 @@ import {
 //component
 import {loader as LoginLoader} from "../components/backend/auth/RedirectIfAuthenticated.js"
 import {loader as ProtectedRouteLoader} from "../components/backend/auth/ProtectedRoute.js"
+import {loader as FrontendNavGuardLoader} from "../components/frontend/FrontendNavGuard.js"
 //user
 import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthenticated.js"
   //import component
-  import TestComponent from "../pages/TestComponent.js";
+  // import TestComponent from "../pages/TestComponent.js";
 
   // import Login from "../pages/backend/auth/Login.js";
   const Login = lazy(()=>import("../pages/backend/auth/Login.js"))
@@ -28,11 +29,24 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
   const RedirectIfUserAuthenticated = lazy(()=>import("../components/auth/RedirectIfUserAuthenticated.js"))
   const UserLogin = lazy(()=>import("../pages/fronted/auth/UserLogin.js"))
 
+  const UserMaster = lazy(()=>import("../pages/fronted/layouts/UserMaster.js"))
+  const Home = lazy(()=> import('../pages/fronted/Home.js'))
+
+  const FrontendNavGuard = lazy(()=>import("../components/frontend/FrontendNavGuard.js"))
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <TestComponent />,
+      element: <FrontendNavGuard element={<UserMaster />} /> ,
+      loader: FrontendNavGuardLoader,
+      children:[
+        {
+          index: true,
+          element: <Home />,
+          // element: <Dashboard />,
+        },
+        
+      ]
     },
     {
       path: "/login",

@@ -23,13 +23,14 @@ export function makeQueryStringUrl(_URL, object) {
 
 
 export function getToken(){
-    return sessionStorage.getItem("token")
+    return localStorage.getItem("auth_token")
 }
 
 export function removeToken(){
-    sessionStorage.removeItem("token")
+     localStorage.removeItem("auth_token")
 }
 
 export function setToken(userToken) {
-    sessionStorage.setItem("token", JSON.stringify(userToken).replace(/"/g, ""));
+    localStorage.setItem("auth_token", userToken);
+    // localStorage.setItem("auth_token", JSON.stringify(userToken).replace(/"/g, ""));
   }

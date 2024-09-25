@@ -14,7 +14,7 @@ import {httpRequest} from '../../../services/AllServices.js'
 import {authLogoutUrl} from '../../../helpers/apiRoutes/index.js'
 import {authHeaders} from '../../../helpers/AuthHelper.js'
 
-import {  useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 
 
 
@@ -22,7 +22,7 @@ import {  useNavigate } from "react-router-dom";
 import NProgress from "nprogress";
 
 const TopBar = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
 
@@ -40,7 +40,8 @@ const TopBar = () => {
         dispatch(resetAuthData())
   
         //redirect login page
-        return navigate('/admin/login')
+        window.location.href = '/admin/login'
+        // return navigate('/admin/login')
       }).catch((error) =>{
         NProgress.done();
         console.log('errors', error)

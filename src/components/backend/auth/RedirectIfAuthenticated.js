@@ -11,7 +11,7 @@ import { Navigate } from 'react-router-dom';
 
 export const loader = async () => {
     let token = getToken();
-  
+    console.log('token',token)
     return await httpRequest({
       url: authUserUrl,
       method: "GET",

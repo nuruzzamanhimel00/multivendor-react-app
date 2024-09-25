@@ -13,7 +13,7 @@ import {setLoginData} from '../../../store/backend/auth-slice.js'
 
 export const loader = async () => {
     let token = getToken();
-    if (!token) return <Navigate to="/admin/login" replace={true} />;
+    if (!token) return window.location.href="/admin/login";
     return await httpRequest({
       url: authUserUrl,
       method: "GET",

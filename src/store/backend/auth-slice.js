@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {removeToken,setToken} from "../../helpers/AllHelpers.js";
 
-function setSessionToken(userToken) {
-  sessionStorage.setItem("token", JSON.stringify(userToken).replace(/"/g, ""));
-}
-function removeSessionToken(userToken) {
-  sessionStorage.removeItem("token");
-}
+
 
 const initialState = {
   user: {},
@@ -15,14 +11,15 @@ const initialState = {
 
 const allReducers = {
   resetAuthData(state) {
+    console.log('resetAuthData')
     state.user = {};
     state.token = null;
     state.isAuth = false;
-    removeSessionToken();
+    removeToken();
   },
   setLoginData(state, action) {
     // console.log("setLoginData", action.payload);
-    setSessionToken(action.payload.token);
+    setToken(action.payload.token);
     state.isAuth = true;
     state.user = action.payload.user;
     state.token = action.payload.token;
