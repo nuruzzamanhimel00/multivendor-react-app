@@ -1,30 +1,44 @@
+import {lazy} from 'react'
 import {
     createBrowserRouter,Navigate
   } from "react-router-dom";
 
-
+//component
+import {loader as LoginLoader} from "../components/backend/auth/RedirectIfAuthenticated.js"
+import {loader as ProtectedRouteLoader} from "../components/backend/auth/ProtectedRoute.js"
+//user
+import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthenticated.js"
   //import component
   import TestComponent from "../pages/TestComponent.js";
 
-  import Login from "../pages/backend/auth/Login.js";
+  // import Login from "../pages/backend/auth/Login.js";
+  const Login = lazy(()=>import("../pages/backend/auth/Login.js"))
 
   //admin panel
-  import AdminLayout from '../pages/backend/layouts/AdminLayout.js'
+  const AdminLayout = lazy(()=>import("../pages/backend/layouts/AdminLayout.js"))
 
-  //component
-  import {loader as LoginLoader} from "../components/auth/RedirectIfAuthenticated.js"
-  import {loader as ProtectedRouteLoader} from "../components/auth/ProtectedRoute.js"
-  import RedirectIfAuthenticated from "../components/auth/RedirectIfAuthenticated.js"
-  import ProtectedRoute from "../components/auth/ProtectedRoute.js"
-  import Dashboard from '../pages/backend/Dashboard.js'
-  import About from '../pages/backend/About.js'
-import Register from "../pages/backend/auth/Register.js";
+  
+  const RedirectIfAuthenticated = lazy(()=>import("../components/backend/auth/RedirectIfAuthenticated.js"))
+  const ProtectedRoute = lazy(()=>import("../components/backend/auth/ProtectedRoute.js"))
+  const Dashboard = lazy(()=>import("../pages/backend/Dashboard.js"))
+  const About = lazy(()=>import("../pages/backend/About.js"))
+  const Register = lazy(()=>import("../pages/backend/auth/Register.js"))
+
+  //user
+  const RedirectIfUserAuthenticated = lazy(()=>import("../components/auth/RedirectIfUserAuthenticated.js"))
+  const UserLogin = lazy(()=>import("../pages/fronted/auth/UserLogin.js"))
+
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <TestComponent />,
     },
+    {
+      path: "/login",
+      element: <RedirectIfUserAuthenticated element={<UserLogin />} />,
+      loader: UserLoginLoader
+  },
     {
         path: "/admin/login",
         element: <RedirectIfAuthenticated element={<Login />} />,

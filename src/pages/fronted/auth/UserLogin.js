@@ -7,7 +7,7 @@ import { AiFillGoogleCircle, AiFillFacebook, AiFillGithub, AiFillEye ,AiFillEyeI
 import {httpRequest} from '../../../services/AllServices.js'
 
 // //api
-import {adminLoginUrl} from "../../../helpers/apiRoutes/index.js"
+import {userLoginUrl} from "../../../helpers/apiRoutes/index.js"
 
 //react router
 //react router
@@ -27,13 +27,13 @@ import ToasterNotification from '../../../components/TosterNotification.js'
 //nprogress
 import NProgress from "nprogress";
 
-const Login = () =>{
+const UserLogin = () =>{
 	const navigate = useNavigate();
 
     const dispatch = useDispatch()
 
     const [input, setInput] = useState({
-        email:'admin@app.com',
+        email:'user@app.com',
         password:'12345678'
     })
 
@@ -53,7 +53,7 @@ const Login = () =>{
 		// console.log(input)
 		if(input.email !== '' && input.password !== ''){
 			await httpRequest({
-				url: adminLoginUrl,
+				url: userLoginUrl,
 				method: "POST",
 				headers: {
 				  "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const Login = () =>{
                 		user: response.user,
 					}))
 					//redirect dashboard
-					navigate("/admin/dashboard");
+					navigate("/");
 				}else{
 					dispatch(addToaster(
 						{id:uuidv4(),severity:'error', summary: 'Error', detail:response.message, life: 3000}
@@ -108,7 +108,7 @@ const Login = () =>{
 				<div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 					<form className="login100-form validate-form" onSubmit={submitHandler}>
 						<span className="login100-form-title p-b-49">
-							Login
+							User Login
 						</span>
 
 						<div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
@@ -195,4 +195,4 @@ const Login = () =>{
     )
 }
 
-export default Login;
+export default UserLogin;
