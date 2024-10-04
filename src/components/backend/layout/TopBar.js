@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Button } from "primereact/button";
 //react redux
 import { useDispatch, useSelector } from "react-redux";
-import {toggleSidebar} from '../../../store/backend/all-slice.js'
+import {toggleSidebar} from '../../../store/all-slice.js'
 import {resetAuthData} from '../../../store/backend/auth-slice.js'
 
 //services

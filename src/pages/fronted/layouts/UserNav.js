@@ -11,6 +11,8 @@ import {httpRequest} from '../../../services/AllServices.js'
 import {authLogoutUrl} from "../../../helpers/apiRoutes/index.js"
 import {authHeaders} from "../../../helpers/AuthHelper.js"
 
+import { NavLink } from "react-router-dom";
+
 //nprogress
 import NProgress from "nprogress";
 // import { useNavigate } from "react-router-dom";
@@ -48,7 +50,13 @@ const UserNav = () =>{
         <NavDropdown title={user.name} id="basic-nav-dropdown">
                         <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                     
-                        </NavDropdown> : ''
+                        </NavDropdown> : (
+                            <>
+                            
+                            <NavLink className="nav-link" to="/login">Login</NavLink>
+                            <NavLink className="nav-link" to="#home">Registration</NavLink>
+                            </>
+                        )
     
 
     return (

@@ -11,6 +11,12 @@ import { Navigate } from 'react-router-dom';
 
 export const loader = async () => {
     let token = getToken();
+    if(token == null){
+      return {
+        response: null,
+        token: null
+      }
+    }
     console.log('get toekn',token)
     return await httpRequest({
       url: authUserUrl,
@@ -34,9 +40,9 @@ export const loader = async () => {
   };
 
 const RedirectIfAuthenticated  = ({element}) =>{
-    const loaderData = useLoaderData();
+    const {token, response} = useLoaderData();
   
-    if(loaderData.response && loaderData.response.hasOwnProperty("name")){
+    if(token !== null && response.hasOwnProperty("name")){
         return <Navigate to="/" />
     }
     return element

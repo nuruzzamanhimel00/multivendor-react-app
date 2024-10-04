@@ -4,7 +4,7 @@ import toasterSlice from "./toaster-slice.js"
 import authSlice from './backend/auth-slice.js'
 
 //admin
-import allSlice from './backend/all-slice.js'
+import allSlice from './all-slice.js'
 
  const store = configureStore({
   reducer: {

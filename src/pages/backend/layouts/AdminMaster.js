@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 import NProgressBar from '../../../components/NProgressBar.js'
 
-const AdminLayout = () =>{
+const AdminMaster = () =>{
 
     const toggleSidebar = useSelector((state) => state.all.hasSidebar)
 
@@ -54,4 +54,4 @@ const AdminLayout = () =>{
     )
 }
 
-export default AdminLayout;
+export default AdminMaster;

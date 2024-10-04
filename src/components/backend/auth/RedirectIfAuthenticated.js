@@ -11,7 +11,12 @@ import { Navigate } from 'react-router-dom';
 
 export const loader = async () => {
     let token = getToken();
-    console.log('token',token)
+    if(token == null){
+      return {
+        response: null,
+        token: null
+      }
+    }
     return await httpRequest({
       url: authUserUrl,
       method: "GET",

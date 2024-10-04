@@ -16,7 +16,7 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
   const Login = lazy(()=>import("../pages/backend/auth/Login.js"))
 
   //admin panel
-  const AdminLayout = lazy(()=>import("../pages/backend/layouts/AdminLayout.js"))
+  const AdminMaster = lazy(()=>import("../pages/backend/layouts/AdminMaster.js"))
 
   
   const RedirectIfAuthenticated = lazy(()=>import("../components/backend/auth/RedirectIfAuthenticated.js"))
@@ -65,7 +65,7 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
     },
     {
       path: "/admin",
-      element: <ProtectedRoute element={<AdminLayout />} />,
+      element: <ProtectedRoute element={<AdminMaster />} />,
       loader: ProtectedRouteLoader,
       children:[
         {
