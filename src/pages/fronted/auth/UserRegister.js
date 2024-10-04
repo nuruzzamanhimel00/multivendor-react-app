@@ -16,7 +16,7 @@ import {useFormik} from 'formik';
 
 import {httpRequest} from "../../../services/AllServices.js"
 
-import {adminRegisterUrl} from "../../../helpers/apiRoutes/index.js"
+import {userRegisterUrl} from "../../../helpers/apiRoutes/index.js"
 import {withOutAuthHeaders} from "../../../helpers/AuthHelper.js"
 
 //redux
@@ -102,7 +102,7 @@ const Register = () => {
     onSubmit: async(values, {resetForm}) => {
       NProgress.start();
       await httpRequest({
-        url: adminRegisterUrl,
+        url: userRegisterUrl,
         method: "POST",
         headers: withOutAuthHeaders(),
         body: values
@@ -121,7 +121,7 @@ const Register = () => {
                       user: response.user,
             }))
             //redirect dashboard
-            navigate("/admin/dashboard");
+            navigate("/");
         }else{
           dispatch(addToaster(
 						{id:uuidv4(),severity:'error', summary: 'Error', detail:response.message, life: 3000}

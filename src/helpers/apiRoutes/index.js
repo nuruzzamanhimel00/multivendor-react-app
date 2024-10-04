@@ -7,3 +7,4 @@ export const authLogoutUrl = BASE_URL + "/api/logout";
 
 //user
 export const userLoginUrl = BASE_URL + "/api/login";
+export const userRegisterUrl = BASE_URL + "/api/register";

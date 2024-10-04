@@ -28,6 +28,7 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
   //user
   const RedirectIfUserAuthenticated = lazy(()=>import("../components/auth/RedirectIfUserAuthenticated.js"))
   const UserLogin = lazy(()=>import("../pages/fronted/auth/UserLogin.js"))
+  const UserRegister = lazy(()=>import("../pages/fronted/auth/UserRegister.js"))
 
   const UserMaster = lazy(()=>import("../pages/fronted/layouts/UserMaster.js"))
   const Home = lazy(()=> import('../pages/fronted/Home.js'))
@@ -52,6 +53,11 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
       path: "/login",
       element: <RedirectIfUserAuthenticated element={<UserLogin />} />,
       loader: UserLoginLoader
+  },
+    {
+      path: "/register",
+      element: <RedirectIfUserAuthenticated element={<UserRegister />} />,
+      loader: LoginLoader
   },
     {
         path: "/admin/login",
