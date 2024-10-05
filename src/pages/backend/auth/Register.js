@@ -6,7 +6,7 @@ import {AiFillGoogleCircle, AiFillFacebook, AiFillGithub, AiFillEye, AiFillEyeIn
 
 // //uuid 
 import { v4 as uuidv4 } from 'uuid'; 
-import ToasterNotification from '../../../components/TosterNotification.js'
+// import ToasterNotification from '../../../components/TosterNotification.js'
 
 // //nprogress 
 import NProgress from "nprogress"; 
@@ -137,7 +137,7 @@ const Register = () => {
 
   return (
     <div className="limiter">
-      <ToasterNotification/>
+      {/* <ToasterNotification/> */}
       <div
         className="container-login100"
         style={{

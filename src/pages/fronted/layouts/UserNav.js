@@ -22,7 +22,7 @@ const UserNav = () =>{
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
     const isAuth = useSelector((state) => state.auth.isAuth)
-    console.log('isAuth',isAuth)
+    // console.log('isAuth',isAuth)
     const logoutHandler = async (e) =>{
         e.preventDefault();
           NProgress.start();

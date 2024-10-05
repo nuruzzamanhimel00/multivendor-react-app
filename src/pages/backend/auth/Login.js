@@ -22,7 +22,7 @@ import {setLoginData} from "../../../store/backend/auth-slice.js"
 import { v4 as uuidv4 } from 'uuid';
 
 //components
-import ToasterNotification from '../../../components/TosterNotification.js'
+// import ToasterNotification from '../../../components/TosterNotification.js'
 
 //nprogress
 import NProgress from "nprogress";
@@ -100,7 +100,7 @@ const Login = () =>{
 
     return (
         <div className="limiter">
-			    <ToasterNotification />        
+			    {/* <ToasterNotification />         */}
 			<div className="container-login100" style={{backgroundImage:  `url(${
 				"/assets/images/bg-01.jpg"
 				})`}} >

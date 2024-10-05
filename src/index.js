@@ -23,6 +23,8 @@ import "nprogress/nprogress.css";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css'
+//toster notification
+import ToasterNotification from './components/TosterNotification.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,6 +34,7 @@ root.render(
   <React.StrictMode>
       <Provider store={store}>
         <RouterProvider router={router} />
+        <ToasterNotification />
       </Provider>
   </React.StrictMode>
 
