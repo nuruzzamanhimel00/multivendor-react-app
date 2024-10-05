@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   hasSidebar: true,
-  
+  isRequestSpinner: false
 };
 
 const allReducers = {
@@ -12,6 +12,9 @@ const allReducers = {
     // console.log('toggleSidebar')
      state.hasSidebar = !state.hasSidebar
   },
+  setRequestSpinner(state, action){
+    state.isRequestSpinner = action.payload
+  }
   
 };
 const allSlice = createSlice({
@@ -20,5 +23,5 @@ const allSlice = createSlice({
   reducers: allReducers,
 });
 
-export const {toggleSidebar} = allSlice.actions;
+export const {toggleSidebar, setRequestSpinner} = allSlice.actions;
 export default allSlice.reducer;

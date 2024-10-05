@@ -10,13 +10,13 @@ import {httpRequest} from '../../../services/AllServices.js'
 import {userLoginUrl} from "../../../helpers/apiRoutes/index.js"
 
 //react router
-//react router
 import { useNavigate, NavLink } from "react-router-dom";
 
 //redux
+import { useSelector, useDispatch } from 'react-redux';
 import {addToaster} from "../../../store/toaster-slice.js"
-import { useDispatch } from 'react-redux'
 import {setLoginData} from "../../../store/backend/auth-slice.js"
+import {setRequestSpinner} from '../../../store/all-slice.js'
 
 //uuid
 import { v4 as uuidv4 } from 'uuid';
@@ -27,11 +27,14 @@ import ToasterNotification from '../../../components/TosterNotification.js'
 //nprogress
 import NProgress from "nprogress";
 
+import RequestSpinner from "../../../components/RequestSpinner.js"
+
 const UserLogin = () =>{
+	//redux
+	const isRequestSpinner = useSelector((state) => state.all.isRequestSpinner)
+	const dispatch = useDispatch()
+	//react router
 	const navigate = useNavigate();
-
-    const dispatch = useDispatch()
-
     const [input, setInput] = useState({
         email:'user@app.com',
         password:'12345678'
@@ -50,6 +53,8 @@ const UserLogin = () =>{
 	
 		e.preventDefault()
 		NProgress.start();
+		//request spinner
+		dispatch(setRequestSpinner(true))
 		// console.log(input)
 		if(input.email !== '' && input.password !== ''){
 			await httpRequest({
@@ -63,6 +68,8 @@ const UserLogin = () =>{
 				  password: input.password,
 				},
 			  }).then((response) =>{
+					//request spinner
+				dispatch(setRequestSpinner(false))
 				console.log('response',response)
 				if(response.status){
 					
@@ -79,15 +86,20 @@ const UserLogin = () =>{
 					//redirect dashboard
 					navigate("/");
 				}else{
+
 					dispatch(addToaster(
 						{id:uuidv4(),severity:'error', summary: 'Error', detail:response.message, life: 3000}
 					))
 				}
 			  }).catch((error) =>{
+						//request spinner
+						dispatch(setRequestSpinner(false))
 				  console.log('errors', error)
 			  })
 			NProgress.done();
 		}else{
+					//request spinner
+					dispatch(setRequestSpinner(false))
 			NProgress.done();
 			dispatch(addToaster(
 				{id:uuidv4(),severity:'error', summary: 'Error', detail:'All Field is required', life: 3000}
@@ -143,23 +155,24 @@ const UserLogin = () =>{
 							<span className="focus-input100" data-symbol="&#xf190;"></span>
 						</div>
 						
-						<div className="text-right p-t-8 p-b-31">
-							{/* <a href="#">
-								Forgot password?
-							</a> */}
+						{/* <div className="text-right p-t-8 p-b-31">
+						
 							<span>
 							Forgot password?
 							</span>
-						</div>
+						</div> */}
 						
 						<div className="container-login100-form-btn">
 							<div className="wrap-login100-form-btn">
 								<div className="login100-form-bgbtn"></div>
-								<button className="login100-form-btn">
+								<button className="login100-form-btn"
+								disabled={isRequestSpinner}
+								>
 									Login
 								</button>
 							</div>
 						</div>
+						<RequestSpinner />
 
 						<div className="txt1 text-center p-t-54 p-b-20">
 							<span>
