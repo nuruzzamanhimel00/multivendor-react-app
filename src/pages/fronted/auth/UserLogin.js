@@ -68,8 +68,7 @@ const UserLogin = () =>{
 				  password: input.password,
 				},
 			  }).then((response) =>{
-					//request spinner
-				dispatch(setRequestSpinner(false))
+					
 				console.log('response',response)
 				if(response.status){
 					
@@ -91,6 +90,8 @@ const UserLogin = () =>{
 						{id:uuidv4(),severity:'error', summary: 'Error', detail:response.message, life: 3000}
 					))
 				}
+				//request spinner
+				dispatch(setRequestSpinner(false))
 			  }).catch((error) =>{
 						//request spinner
 						dispatch(setRequestSpinner(false))

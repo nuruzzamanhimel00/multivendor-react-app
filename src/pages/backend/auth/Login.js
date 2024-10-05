@@ -15,7 +15,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 
 //redux
 import {addToaster} from "../../../store/toaster-slice.js"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {setLoginData} from "../../../store/backend/auth-slice.js"
 
 //uuid
@@ -26,10 +26,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 //nprogress
 import NProgress from "nprogress";
+import RequestSpinner from "../../../components/RequestSpinner.js"
+import {setRequestSpinner} from '../../../store/all-slice.js'
 
 const Login = () =>{
 	const navigate = useNavigate();
 
+	const isRequestSpinner = useSelector((state) => state.all.isRequestSpinner)
     const dispatch = useDispatch()
 
     const [input, setInput] = useState({
@@ -51,6 +54,8 @@ const Login = () =>{
 		e.preventDefault()
 		NProgress.start();
 		// console.log(input)
+				//request spinner
+				dispatch(setRequestSpinner(true))
 		if(input.email !== '' && input.password !== ''){
 			await httpRequest({
 				url: adminLoginUrl,
@@ -83,11 +88,17 @@ const Login = () =>{
 						{id:uuidv4(),severity:'error', summary: 'Error', detail:response.message, life: 3000}
 					))
 				}
+						//request spinner
+						dispatch(setRequestSpinner(false))
 			  }).catch((error) =>{
+						//request spinner
+						dispatch(setRequestSpinner(false))
 				  console.log('errors', error)
 			  })
 			NProgress.done();
 		}else{
+					//request spinner
+					dispatch(setRequestSpinner(false))
 			NProgress.done();
 			dispatch(addToaster(
 				{id:uuidv4(),severity:'error', summary: 'Error', detail:'All Field is required', life: 3000}
@@ -155,12 +166,12 @@ const Login = () =>{
 						<div className="container-login100-form-btn">
 							<div className="wrap-login100-form-btn">
 								<div className="login100-form-bgbtn"></div>
-								<button className="login100-form-btn">
+								<button className="login100-form-btn" 	disabled={isRequestSpinner}>
 									Login
 								</button>
 							</div>
 						</div>
-
+						<RequestSpinner />
 						<div className="txt1 text-center p-t-54 p-b-20">
 							<span>
 							<NavLink to="/admin/register">

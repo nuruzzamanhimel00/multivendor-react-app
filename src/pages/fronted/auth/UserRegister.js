@@ -20,9 +20,13 @@ import {userRegisterUrl} from "../../../helpers/apiRoutes/index.js"
 import {withOutAuthHeaders} from "../../../helpers/AuthHelper.js"
 
 //redux
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {addToaster} from "../../../store/toaster-slice.js"
 import {setLoginData} from "../../../store/backend/auth-slice.js"
+
+import {setRequestSpinner} from '../../../store/all-slice.js'
+
+import RequestSpinner from "../../../components/RequestSpinner.js"
 
 // const rules = [
 //   {
@@ -85,8 +89,10 @@ const validate = (values) => {
 };
 
 const UserRegister = () => {
+  const isRequestSpinner = useSelector((state) => state.all.isRequestSpinner)
+	const dispatch = useDispatch()
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
 
   const [isShowPassword,
     setIsShowPassword] = useState(false)
@@ -100,6 +106,7 @@ const UserRegister = () => {
 
     validate,
     onSubmit: async(values, {resetForm}) => {
+      dispatch(setRequestSpinner(true))
       NProgress.start();
       await httpRequest({
         url: userRegisterUrl,
@@ -128,7 +135,8 @@ const UserRegister = () => {
 					))
         }
       
-					
+						//request spinner
+            dispatch(setRequestSpinner(false))
         console.log('response',response)
       })
 
@@ -267,12 +275,12 @@ const UserRegister = () => {
             <div className="container-login100-form-btn">
               <div className="wrap-login100-form-btn">
                 <div className="login100-form-bgbtn"></div>
-                <button className="login100-form-btn">
+                <button className="login100-form-btn" disabled={isRequestSpinner}>
                   Sign Up
                 </button>
               </div>
             </div>
-
+            <RequestSpinner />
             <div className="txt1 text-center p-t-54 p-b-20">
               <NavLink to="/login">
                 Or Sign In Using
