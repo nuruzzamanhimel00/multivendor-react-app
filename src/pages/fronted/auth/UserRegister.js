@@ -84,7 +84,7 @@ const validate = (values) => {
   return errors;
 };
 
-const Register = () => {
+const UserRegister = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -274,7 +274,7 @@ const Register = () => {
             </div>
 
             <div className="txt1 text-center p-t-54 p-b-20">
-              <NavLink to="/admin/login">
+              <NavLink to="/login">
                 Or Sign In Using
               </NavLink>
             </div>
@@ -293,4 +293,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default UserRegister

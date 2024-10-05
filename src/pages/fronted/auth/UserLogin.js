@@ -163,7 +163,7 @@ const UserLogin = () =>{
 
 						<div className="txt1 text-center p-t-54 p-b-20">
 							<span>
-							<NavLink to="/admin/register">
+							<NavLink to="/register">
 							 Sign Up Using
 								</NavLink><br></br>
 							<NavLink to="/">

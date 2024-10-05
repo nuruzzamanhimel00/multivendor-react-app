@@ -1,7 +1,8 @@
-import React,{lazy} from 'react'
+import React from 'react'
 //react router
 import { Outlet} from "react-router-dom";
-const UserNav = lazy(()=>import("./UserNav.js"))
+import UserNav from './UserNav.js'
+// const UserNav = lazy(()=>import("./UserNav.js"))
 
 
 const UserMaster = () =>{
