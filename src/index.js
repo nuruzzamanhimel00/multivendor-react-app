@@ -19,8 +19,10 @@ import 'primeicons/primeicons.css';
 
 //nprogress
 import "nprogress/nprogress.css";
-//bootstrap
+//prime react
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 
+//bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css'
 //toster notification

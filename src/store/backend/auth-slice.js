@@ -11,7 +11,7 @@ const initialState = {
 
 const allReducers = {
   resetAuthData(state) {
-    console.log('resetAuthData')
+    // console.log('resetAuthData')
     state.user = {};
     state.token = null;
     state.isAuth = false;
