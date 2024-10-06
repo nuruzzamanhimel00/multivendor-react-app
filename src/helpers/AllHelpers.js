@@ -1,4 +1,5 @@
 // import {NProgress} from "./global-files.js"
+import AllNavs from "../configs/AllNavs.js"
 export function makeQueryStringUrl(_URL, object) {
   const url = new URL(_URL);
   Object.keys(object).forEach((key) => {
@@ -33,4 +34,10 @@ export function removeToken(){
 export function setToken(userToken) {
     localStorage.setItem("auth_token", userToken);
     // localStorage.setItem("auth_token", JSON.stringify(userToken).replace(/"/g, ""));
+  }
+  export function getNav(user_type, prevItems){
+    const newNavs = AllNavs.filter(nav => 
+      nav.user_type === user_type && !prevItems.some(item => item.id === nav.id)
+    );
+    return newNavs;
   }

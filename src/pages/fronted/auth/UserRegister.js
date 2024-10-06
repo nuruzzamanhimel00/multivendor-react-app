@@ -155,7 +155,7 @@ const UserRegister = () => {
         <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
           <form className="login100-form validate-form" onSubmit={formik.handleSubmit}>
             <span className="login100-form-title p-b-49">
-              Register
+              User Register
             </span>
 
             <div
