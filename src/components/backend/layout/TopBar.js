@@ -15,6 +15,8 @@ import {authLogoutUrl} from '../../../helpers/apiRoutes/index.js'
 import {authHeaders} from '../../../helpers/AuthHelper.js'
 
 // import {  useNavigate } from "react-router-dom";
+//bootstrap
+import Image from 'react-bootstrap/Image';
 
 
 
@@ -64,8 +66,14 @@ const TopBar = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              {/* <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link> */}
+              <Nav.Link href="#">
+                <button className="mt-1">
+                <i class="text-2xl mb-3 text-color-secondary pi pi-envelope"></i>
+                </button>
+              </Nav.Link>
+              <Nav.Link href="#">
+                <Image src={user.avatar_url} fluid  thumbnail  width="30px" height="30px" />
+              </Nav.Link>
               <NavDropdown
                 title={user.name}
                 id="basic-nav-dropdown"
