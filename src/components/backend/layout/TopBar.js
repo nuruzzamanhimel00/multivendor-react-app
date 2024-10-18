@@ -8,20 +8,18 @@ import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
 import {toggleSidebar} from '../../../store/all-slice.js'
 import {resetAuthData} from '../../../store/backend/auth-slice.js'
+import {addToaster} from '../../../store/toaster-slice.js'
 
-//services
-import {httpRequest} from '../../../services/AllServices.js'
-import {authLogoutUrl} from '../../../helpers/apiRoutes/index.js'
-import {authHeaders} from '../../../helpers/AuthHelper.js'
-
-// import {  useNavigate } from "react-router-dom";
 //bootstrap
 import Image from 'react-bootstrap/Image';
 
+//uuid
+import { v4 as uuidv4 } from 'uuid';
 
 
-//nprogress
-import NProgress from "nprogress";
+
+//service
+import {logoutRequestService} from '../../../services/AllServices.js'
 
 const TopBar = () => {
   // const navigate = useNavigate();
@@ -30,25 +28,18 @@ const TopBar = () => {
 
   const logoutHandler = async (e) =>{
     e.preventDefault();
-  	NProgress.start();
-    await httpRequest({
-      url: authLogoutUrl,
-      method: "POST",
-      headers: authHeaders(),
-      
-      }).then((response) =>{
-        NProgress.done();
+    logoutRequestService().then((response)=>{
+      if(response){
         //login session remove and reset
-        dispatch(resetAuthData())
-  
-        //redirect login page
-        window.location.href = '/admin/login'
-        // return navigate('/admin/login')
-      }).catch((error) =>{
-        NProgress.done();
-        console.log('errors', error)
-      })
-    
+          dispatch(resetAuthData())
+          //redirect login page
+          window.location.href = '/admin/login'
+      }
+    }).catch((error)=>{
+      dispatch(addToaster(
+        {id:uuidv4(),severity:'error', summary: 'Error', detail:error, life: 3000}
+      ))
+    })
   }
 
   return (
@@ -68,7 +59,7 @@ const TopBar = () => {
             <Nav>
               <Nav.Link href="#">
                 <button className="mt-1">
-                <i class="text-2xl mb-3 text-color-secondary pi pi-envelope"></i>
+                <i className="text-2xl mb-3 text-color-secondary pi pi-envelope"></i>
                 </button>
               </Nav.Link>
               <Nav.Link href="#">
