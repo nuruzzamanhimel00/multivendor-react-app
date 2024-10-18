@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 //components
 import VerticalChart from '../../components/backend/dashboard/VerticalChart.js'
+import RecentSellerMessage from '../../components/backend/dashboard/RecentSellerMessage.js'
 const Dashboard = () => {
     return (
         <>
@@ -110,7 +111,20 @@ const Dashboard = () => {
           </Row>
           <Row>
             <Col md={6} className='my-4'>
-              <VerticalChart />
+              <Card  className="my-2">
+                <Card.Body>
+                <VerticalChart />
+                </Card.Body>
+              </Card>
+            
+            </Col>
+            <Col md={6} className='my-4'>
+              <Card  className="my-2">
+                <Card.Body>
+                  <RecentSellerMessage />
+                </Card.Body>
+              </Card>
+            
             </Col>
           </Row>
         </Container>
