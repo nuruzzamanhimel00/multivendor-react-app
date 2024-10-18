@@ -47,7 +47,9 @@ const TopBar = () => {
       <Navbar className="bg-body-tertiary">
         <Container fluid>
           <Navbar.Brand href="#home" style={{ display: "flex" }}>
-            Admin Panel
+            {
+              user.user_type === 'admin' ? ' Admin Panel' : ' Seller Panel'
+            }
             <Button link onClick={() => {
               dispatch(toggleSidebar())
             } } >
@@ -64,6 +66,7 @@ const TopBar = () => {
               </Nav.Link>
               <Nav.Link href="#">
                 <Image src={user.avatar_url} fluid  thumbnail  width="30px" height="30px" />
+                Admin
               </Nav.Link>
               <NavDropdown
                 title={user.name}

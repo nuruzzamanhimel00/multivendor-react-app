@@ -4,18 +4,17 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-// import Breadcrumb from "react-bootstrap/Breadcrumb";
-// import Form from "react-bootstrap/Form";
-// import Modal from "react-bootstrap/Modal";
+//components
+import VerticalChart from '../../components/backend/dashboard/VerticalChart.js'
 const Dashboard = () => {
     return (
         <>
         <Container>
           <Row>
             <Col md={4}>
-              <Card style={{ width: "18rem" }}>
+              <Card  className="my-2">
                 <Card.Body>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between my-2">
                     <div className="d-flex flex-column">
                       <div>Orders </div>
                       <div>12</div>
@@ -29,9 +28,9 @@ const Dashboard = () => {
               </Card>
             </Col>
             <Col md={4}>
-              <Card style={{ width: "18rem" }}>
+              <Card  className="my-2">
                 <Card.Body>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between my-2">
                     <div className="d-flex flex-column">
                       <div>Orders </div>
                       <div>12</div>
@@ -45,9 +44,9 @@ const Dashboard = () => {
               </Card>
             </Col>
             <Col md={4}>
-              <Card style={{ width: "18rem" }}>
+              <Card  className="my-2">
                 <Card.Body>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between my-2">
                     <div className="d-flex flex-column">
                       <div>Orders </div>
                       <div>12</div>
@@ -61,9 +60,9 @@ const Dashboard = () => {
               </Card>
             </Col>
             <Col md={4}>
-              <Card style={{ width: "18rem" }}>
+              <Card  className="my-2">
                 <Card.Body>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between my-2">
                     <div className="d-flex flex-column">
                       <div>Orders </div>
                       <div>12</div>
@@ -75,6 +74,43 @@ const Dashboard = () => {
                   <Card.Text>24 new since last visit</Card.Text>
                 </Card.Body>
               </Card>
+            </Col>
+            <Col md={4}>
+              <Card  className="my-2">
+                <Card.Body>
+                  <div className="d-flex justify-content-between my-2">
+                    <div className="d-flex flex-column">
+                      <div>Orders </div>
+                      <div>12</div>
+                    </div>
+                    <div>
+                      <i className="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                    </div>
+                  </div>
+                  <Card.Text>24 new since last visit</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={4}>
+              <Card  className="my-2">
+                <Card.Body>
+                  <div className="d-flex justify-content-between my-2">
+                    <div className="d-flex flex-column">
+                      <div>Orders </div>
+                      <div>12</div>
+                    </div>
+                    <div>
+                      <i className="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                    </div>
+                  </div>
+                  <Card.Text>24 new since last visit</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6} className='my-4'>
+              <VerticalChart />
             </Col>
           </Row>
         </Container>

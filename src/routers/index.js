@@ -9,37 +9,17 @@ import {loader as ProtectedRouteLoader} from "../components/backend/auth/Protect
 import {loader as FrontendNavGuardLoader} from "../components/frontend/FrontendNavGuard.js"
 //user
 import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthenticated.js"
-  //import component
-  // import TestComponent from "../pages/TestComponent.js";
 
   import Login from "../pages/backend/auth/Login.js";
-  // const Login = lazy(()=>import("../pages/backend/auth/Login.js"))
-
-
   //admin panel
-  // const AdminMaster = lazy(()=>import("../pages/backend/layouts/AdminMaster.js"))
-  import AdminMaster from "../pages/backend/layouts/AdminMaster.js";
-  
-  // const RedirectIfAuthenticated = lazy(()=>import("../components/backend/auth/RedirectIfAuthenticated.js"))
-  // const ProtectedRoute = lazy(()=>import("../components/backend/auth/ProtectedRoute.js"))
-  // const Dashboard = lazy(()=>import("../pages/backend/Dashboard.js"))
-  // const About = lazy(()=>import("../pages/backend/About.js"))
-  // const Register = lazy(()=>import("../pages/backend/auth/Register.js"))
 
+  import AdminMaster from "../pages/backend/layouts/AdminMaster.js";
   import RedirectIfAuthenticated from "../components/backend/auth/RedirectIfAuthenticated.js";  
   import ProtectedRoute from "../components/backend/auth/ProtectedRoute.js";  
   import Dashboard from "../pages/backend/Dashboard.js";  
   import About from "../pages/backend/About.js";  
   import Register from "../pages/backend/auth/Register.js";  
-
-
   //user
-  // const RedirectIfUserAuthenticated = lazy(()=>import("../components/auth/RedirectIfUserAuthenticated.js"))
-  // const UserLogin = lazy(()=>import("../pages/fronted/auth/UserLogin.js"))
-  // const UserRegister = lazy(()=>import("../pages/fronted/auth/UserRegister.js"))
-  // const UserMaster = lazy(()=>import("../pages/fronted/layouts/UserMaster.js"))
-  // const Home = lazy(()=> import('../pages/fronted/Home.js'))
-  // const FrontendNavGuard = lazy(()=>import("../components/frontend/FrontendNavGuard.js"))
 
   import RedirectIfUserAuthenticated from "../components/auth/RedirectIfUserAuthenticated.js";  
   import UserLogin from "../pages/fronted/auth/UserLogin.js";  
