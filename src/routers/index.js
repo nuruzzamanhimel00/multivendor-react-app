@@ -18,9 +18,10 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
   import ProtectedRoute from "../components/backend/auth/ProtectedRoute.js";  
   import Dashboard from "../pages/backend/Dashboard.js";  
   import About from "../pages/backend/About.js";  
-  import Register from "../pages/backend/auth/Register.js";  
-  //user
+  import Register from "../pages/backend/auth/Register.js"; 
+  import OrderList from '../pages/backend/orders/OrderList.js' 
 
+  //user
   import RedirectIfUserAuthenticated from "../components/auth/RedirectIfUserAuthenticated.js";  
   import UserLogin from "../pages/fronted/auth/UserLogin.js";  
   import UserRegister from "../pages/fronted/auth/UserRegister.js";  
@@ -77,6 +78,10 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
         {
           path: "dashboard",
           element: <Dashboard />,
+        },
+        {
+          path: "orders",
+          element: <OrderList />,
         },
         {
           path: "about",

@@ -10,6 +10,11 @@ const AllNavs = [
           to: "/admin/dashboard",
         },
         {
+          label: "Orders",
+          icon: "pi pi-shopping-cart",
+          to: "/admin/orders",
+        },
+        {
           label: "About",
           icon: "pi pi-fw pi-home",
           to: "/admin/about",

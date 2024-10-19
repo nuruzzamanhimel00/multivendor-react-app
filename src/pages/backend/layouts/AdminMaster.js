@@ -6,18 +6,20 @@ import { Outlet} from "react-router-dom";
 import TopBar from '../../../components/backend/layout/TopBar.js'
 import SideBar from '../../../components/backend/layout/SideBar.js'
 import FooterBar from '../../../components/backend/layout/FooterBar.js'
+import BreadCrumbSection from '../../../components/backend/layout/BreadCrumbSection.js'
 
 //react redux
 import { useSelector } from 'react-redux';
 
 import NProgressBar from '../../../components/NProgressBar.js'
 
+
+
 const AdminMaster = () =>{
 
     const toggleSidebar = useSelector((state) => state.all.hasSidebar)
 
     const toggleMenueClass = !toggleSidebar ? "layout-static-inactive" : "";
-
 
     return (
     <>
@@ -35,6 +37,7 @@ const AdminMaster = () =>{
         
         <div className="layout-main-container">
           <div className="layout-main">
+          <BreadCrumbSection />
             <Outlet />
           </div>
           <FooterBar />

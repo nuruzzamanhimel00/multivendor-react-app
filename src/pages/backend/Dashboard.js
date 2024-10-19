@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 //components
 import VerticalChart from '../../components/backend/dashboard/VerticalChart.js'
 import RecentSellerMessage from '../../components/backend/dashboard/RecentSellerMessage.js'
+import RecentOrder from '../../components/backend/dashboard/RecentOrder.js'
 const Dashboard = () => {
     return (
         <>
@@ -110,7 +111,7 @@ const Dashboard = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={6} className='my-4'>
+            <Col md={6} className='mt-4'>
               <Card  className="my-2">
                 <Card.Body>
                 <VerticalChart />
@@ -118,7 +119,7 @@ const Dashboard = () => {
               </Card>
             
             </Col>
-            <Col md={6} className='my-4'>
+            <Col md={6} className='mt-4'>
               <Card  className="my-2">
                 <Card.Body>
                   <RecentSellerMessage />
@@ -126,6 +127,17 @@ const Dashboard = () => {
               </Card>
             
             </Col>
+          </Row>
+          <Row>
+            <Col md={12} className='mt-4'>
+              <Card  className="my-2">
+                <Card.Body>
+                  <RecentOrder />
+                </Card.Body>
+              </Card>
+            
+            </Col>
+          
           </Row>
         </Container>
       </>
