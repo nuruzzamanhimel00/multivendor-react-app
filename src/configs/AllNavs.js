@@ -15,6 +15,11 @@ const AllNavs = [
           to: "/admin/orders",
         },
         {
+          label: "Categories",
+          icon: "pi pi-list",
+          to: "/admin/categories",
+        },
+        {
           label: "About",
           icon: "pi pi-fw pi-home",
           to: "/admin/about",

@@ -30,7 +30,7 @@ export default function OrderList(){
     //expanded datatable 
     const [products, setProducts] = useState([]);
     const [expandedRows, setExpandedRows] = useState(null);
-    const [loading, setLoading] = useState(false)
+    const [loading] = useState(false)
     const toast = useRef(null);
     const onRowExpand = (event) => {
         toast.current.show({ severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000 });

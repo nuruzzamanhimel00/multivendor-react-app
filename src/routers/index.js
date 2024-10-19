@@ -20,6 +20,7 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
   import About from "../pages/backend/About.js";  
   import Register from "../pages/backend/auth/Register.js"; 
   import OrderList from '../pages/backend/orders/OrderList.js' 
+  import CategoryList from '../pages/backend/categories/CategoryList.js' 
 
   //user
   import RedirectIfUserAuthenticated from "../components/auth/RedirectIfUserAuthenticated.js";  
@@ -82,6 +83,10 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
         {
           path: "orders",
           element: <OrderList />,
+        },
+        {
+          path: "categories",
+          element: <CategoryList />,
         },
         {
           path: "about",
