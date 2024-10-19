@@ -9,16 +9,7 @@ const AllNavs = [
           icon: "pi pi-fw pi-home",
           to: "/admin/dashboard",
         },
-        {
-          label: "Orders",
-          icon: "pi pi-shopping-cart",
-          to: "/admin/orders",
-        },
-        {
-          label: "Categories",
-          icon: "pi pi-list",
-          to: "/admin/categories",
-        },
+        
         {
           label: "About",
           icon: "pi pi-fw pi-home",
@@ -29,12 +20,22 @@ const AllNavs = [
     {
         id:2,
         label: "Home",
-        user_type:'seller',
+        user_type:'owner',
         items: [
           {
             label: "Dashboard",
             icon: "pi pi-fw pi-home",
             to: "/admin/dashboard",
+          },
+          {
+            label: "Orders",
+            icon: "pi pi-shopping-cart",
+            to: "/admin/orders",
+          },
+          {
+            label: "Categories",
+            icon: "pi pi-list",
+            to: "/admin/categories",
           },
           {
             label: "About",

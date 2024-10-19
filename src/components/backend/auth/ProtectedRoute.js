@@ -40,7 +40,7 @@ const ProtectedRoute = ({element}) => {
     // console.log('loaderData',loaderData)
     if(!response.hasOwnProperty("name")){
         return <Navigate to="/admin/login" />
-    }else if(response.hasOwnProperty("name") && !['seller','admin'].includes(response.user_type)){
+    }else if(response.hasOwnProperty("name") && !['owner','admin'].includes(response.user_type)){
       return <Navigate to="/admin/login" />
   }
     //admin token store

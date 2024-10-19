@@ -30,10 +30,11 @@ const TopBar = () => {
     e.preventDefault();
     logoutRequestService().then((response)=>{
       if(response){
-        //login session remove and reset
-          dispatch(resetAuthData())
+      
           //redirect login page
           window.location.href = '/admin/login'
+            //login session remove and reset
+            dispatch(resetAuthData())
       }
     }).catch((error)=>{
       dispatch(addToaster(
@@ -48,7 +49,7 @@ const TopBar = () => {
         <Container fluid>
           <Navbar.Brand href="#home" style={{ display: "flex" }}>
             {
-              user.user_type === 'admin' ? ' Admin Panel' : ' Seller Panel'
+              user.user_type === 'admin' ? ' Admin Panel' : ' Owner Panel'
             }
             <Button link onClick={() => {
               dispatch(toggleSidebar())

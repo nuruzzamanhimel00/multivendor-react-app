@@ -4,7 +4,7 @@ import {getNav} from '../../../helpers/AllHelpers.js'
 //service
 import {logoutRequestService} from '../../../services/AllServices.js'
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import {resetAuthData} from '../../../store/backend/auth-slice.js'
 import {addToaster} from '../../../store/toaster-slice.js'
 
@@ -14,24 +14,26 @@ import { v4 as uuidv4 } from 'uuid';
 const SideBar = () => {
   const [items, setItems] = useState([])
   const dispatch = useDispatch()
+  const user = useSelector((state) => state.auth.user)
   useEffect(() => {
     // Use a functional update to access the previous state of `items`
     setItems(prevItems => {
       // Filter the new navs that are not already in `prevItems`
-      const newNavs = getNav('admin',prevItems);
+      const newNavs = getNav(user.user_type === 'admin'?'admin':'owner',prevItems);
       // Return a new array with both previous and new items
       return [...prevItems, ...newNavs];
     });
-  }, []); // Empty dependency array, since we're using functional updates
+  }, [user]); // Empty dependency array, since we're using functional updates
   
   const logoutHandler = async (e) =>{
     e.preventDefault();
     logoutRequestService().then((response)=>{
       if(response){
-        //login session remove and reset
-          dispatch(resetAuthData())
+        
           //redirect login page
           window.location.href = '/admin/login'
+          //login session remove and reset
+          dispatch(resetAuthData())
       }
     }).catch((error)=>{
       dispatch(addToaster(
