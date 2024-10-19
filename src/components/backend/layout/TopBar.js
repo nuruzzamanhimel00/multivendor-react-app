@@ -15,8 +15,8 @@ import Image from 'react-bootstrap/Image';
 
 //uuid
 import { v4 as uuidv4 } from 'uuid';
-
-
+//prime react
+import { Badge } from 'primereact/badge';
 
 //service
 import {logoutRequestService} from '../../../services/AllServices.js'
@@ -60,9 +60,12 @@ const TopBar = () => {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <Nav.Link href="#">
-                <button className="mt-1">
-                <i className="text-2xl mb-3 text-color-secondary pi pi-envelope"></i>
-                </button>
+              {/* <i className="text-2xl mb-3 text-color-secondary pi pi-envelope ">
+              <Badge value="2"></Badge>
+              </i> */}
+              <i className="pi pi-envelope p-overlay-badge" style={{ fontSize: '1.5rem' }}>
+              <Badge value="2"></Badge>
+            </i>
               </Nav.Link>
               <Nav.Link href="#">
                 <Image src={user.avatar_url} fluid  thumbnail  width="30px" height="30px" />

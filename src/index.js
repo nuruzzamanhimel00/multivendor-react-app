@@ -12,17 +12,18 @@ import router from "./routers/index.js";
 //redux
 import store from "./store/index.js";
 import { Provider } from "react-redux";
-
-//bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './assets/css/style.css'
-
-//prime react
-import "primereact/resources/themes/lara-light-cyan/theme.css";
-import 'primeicons/primeicons.css';
-
 //nprogress
 import "nprogress/nprogress.css";
+
+//bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+//prime react
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primeicons/primeicons.css";
+//custome style
+import './assets/css/style.css'
+
+
 
 //toster notification
 import ToasterNotification from './components/TosterNotification.js'
