@@ -170,3 +170,11 @@
     padding: 0;
     margin: 0;
 }
+
+.phone-input{
+    width:100% !important;
+}
+
+.phone-input .form-control {
+    width:100% !important;
+}

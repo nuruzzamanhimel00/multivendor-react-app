@@ -24,6 +24,13 @@ import { useDispatch } from 'react-redux'
 import {addToaster} from "../../../store/toaster-slice.js"
 import {setLoginData} from "../../../store/backend/auth-slice.js"
 
+//phone input 
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+
+// //style
+// import styles from '../../../assets/css/global.module.css' 
+
 // const rules = [
 //   {
 //     message: "1 number",
@@ -41,7 +48,9 @@ import {setLoginData} from "../../../store/backend/auth-slice.js"
 // ]
 
 const initialValues = {
+  shop_name: "",
   name: "",
+  phone: "",
   email: "",
   password: "",
   confirmed_password: ""
@@ -54,6 +63,16 @@ const validate = (values) => {
     errors.name = "Required";
   } else if (values.name.length > 50) {
     errors.name = "Must be 50 characters or less";
+  }
+  if (!values.shop_name) {
+    errors.shop_name = "Required";
+  } else if (values.shop_name.length > 50) {
+    errors.shop_name = "Must be 50 characters or less";
+  }
+  if (!values.phone) {
+    errors.phone = "Required";
+  } else if (values.phone.length > 15) {
+    errors.phone = "Must be 15 characters or less";
   }
 
   if (!values.email) {
@@ -135,6 +154,12 @@ const Register = () => {
     }
   });
 
+  const changePhoneHandler = (phone) =>{
+    //set individal value into the formik
+    formik.setFieldValue("phone", phone);
+
+  }
+
   return (
     <div className="limiter">
       {/* <ToasterNotification/> */}
@@ -149,7 +174,25 @@ const Register = () => {
             <span className="login100-form-title p-b-49">
               Register
             </span>
-
+            <div
+              className="wrap-input100 validate-input m-b-23"
+              data-validate="Shop name is reauired">
+              <span className="label-input100">Shop name</span>
+              <input
+                className="input100"
+                type="text"
+                name="shop_name"
+                placeholder="Type your shop name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                defaultValue={formik.values.shop_name}/> {formik.errors.shop_name && formik.touched.shop_name
+                ? (
+                  <div className="text-danger">
+                    {formik.errors.shop_name}
+                  </div>
+                )
+                : null}
+            </div>
             <div
               className="wrap-input100 validate-input m-b-23"
               data-validate="name is reauired">
@@ -165,6 +208,28 @@ const Register = () => {
                 ? (
                   <div className="text-danger">
                     {formik.errors.name}
+                  </div>
+                )
+                : null}
+            </div>
+            <div
+              className=" validate-input m-b-23"
+              data-validate="name is reauired">
+              <span className="label-input100">Phone</span>
+          
+                <PhoneInput
+                  className="phone-input"
+                  country={'bd'}
+                  value={formik.values.phone}
+                  // onChange={formik.handleChange}
+                  onChange={phone =>  changePhoneHandler(phone)}
+                  onBlur={formik.handleBlur}
+
+                />
+                  {formik.errors.phone && formik.touched.phone
+                ? (
+                  <div className="text-danger">
+                    {formik.errors.phone}
                   </div>
                 )
                 : null}

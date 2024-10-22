@@ -18,9 +18,10 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
   import ProtectedRoute from "../components/backend/auth/ProtectedRoute.js";  
   import Dashboard from "../pages/backend/Dashboard.js";  
   import About from "../pages/backend/About.js";  
-  // import Register from "../pages/backend/auth/Register.js"; 
+  import Register from "../pages/backend/auth/Register.js"; 
   import OrderList from '../pages/backend/orders/OrderList.js' 
   import CategoryList from '../pages/backend/categories/CategoryList.js' 
+  import ShopEdit from '../pages/backend/my-shop/ShopEdit.js'
 
   //user
   import RedirectIfUserAuthenticated from "../components/auth/RedirectIfUserAuthenticated.js";  
@@ -60,11 +61,11 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
         element: <RedirectIfAuthenticated element={<Login />} />,
         loader: LoginLoader
     },
-    // {
-    //     path: "/admin/register",
-    //     element: <RedirectIfAuthenticated element={<Register />} />,
-    //     loader: LoginLoader
-    // },
+    {
+        path: "/admin/register",
+        element: <RedirectIfAuthenticated element={<Register />} />,
+        loader: LoginLoader
+    },
     {
       path: "/admin",
       element: <ProtectedRoute element={<AdminMaster />} />,
@@ -87,6 +88,10 @@ import {loader as UserLoginLoader} from "../components/auth/RedirectIfUserAuthen
         {
           path: "categories",
           element: <CategoryList />,
+        },
+        {
+          path: "my-shop",
+          element: <ShopEdit />,
         },
         {
           path: "about",
